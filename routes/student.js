@@ -2,6 +2,20 @@ var student = require('../models/student');
 var express = require('express');
 var router = express.Router();
 
+// Model.find
+
+// Model.find(query, fields, options, callback)
+// // fields 和 options 都是可选参数
+// 简单查询
+
+// Model.find({ 'csser.com': 5 }, function (err, docs) { // docs 是查询的结果数组 });
+// 只查询指定键的结果
+
+// Model.find({}, ['first', 'last'], function (err, docs) {
+//   // docs 此时只包含文档的部分键值
+// })
+
+
 //全部学生信息 没有成绩
 /*[
 {name:"zhangsan",gender:"男",classes:"1405",number:"14"},
