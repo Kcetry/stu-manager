@@ -39,6 +39,15 @@ define(["smartgrid","text!./subList.html","css!./subList.css"], function(sm,subL
                 vm.data = res.data;
             });               
         }
+
+        vm.getSubId = function(subName) {
+            for(var a in vm.data) {
+                if(subName== vm.data[a].name) {
+                    return vm.data[a]._id;
+                }
+            }
+        }
+
         vm.isDisplay = false;
         vm.selectedId = "";
         vm.smartgrid = {
@@ -108,5 +117,8 @@ define(["smartgrid","text!./subList.html","css!./subList.css"], function(sm,subL
         vm.name = ""
     })
     subList.render();
-    avalon.vmodels.root.subList = "subList"
+    avalon.vmodels.root.subList = "subList";
+    return {
+        getSubId:subList.getSubId
+    }
 })

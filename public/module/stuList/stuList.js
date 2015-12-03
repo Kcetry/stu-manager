@@ -8,7 +8,7 @@ define(["smartgrid","text!./stuList.html","css!./stuList.css"], function(sm,stuL
             vm.isDisplay = !vm.isDisplay;
             vm.type = "post";
         }
-        vm.submit = function() {
+        vm.submitStu = function() {
             var data = {name:stuForm.name,number:stuForm.number,gender:stuForm.gender,classes:stuForm.classes};
             var type;
             if(vm.type == "post") url = '/student';
@@ -25,6 +25,7 @@ define(["smartgrid","text!./stuList.html","css!./stuList.css"], function(sm,stuL
                 vm.type = "";
             }); 
         }
+
         vm.back = function() {
             vm.isDisplay = !vm.isDisplay;
             vm.type = "";
@@ -40,6 +41,16 @@ define(["smartgrid","text!./stuList.html","css!./stuList.css"], function(sm,stuL
                 vm.data = res.data;
             });               
         }
+
+        vm.getStuId = function(stuName) {
+            for(var a in vm.data) {
+                if(stuName== vm.data[a].name) {
+                    console.log(vm.data[a]);
+                    return vm.data[a]._id;
+                }
+            }
+        }
+
         vm.isDisplay = false;
         vm.selectedId = "";
         vm.smartgrid = {
@@ -118,4 +129,7 @@ define(["smartgrid","text!./stuList.html","css!./stuList.css"], function(sm,stuL
     })
     stuList.render();
     avalon.vmodels.root.stuList = "stuList"
+    return {
+        getStuId:stuList.getStuId
+    }
 })

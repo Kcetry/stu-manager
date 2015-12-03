@@ -1,4 +1,4 @@
-define(["smartgrid","text!./scoreList.html","css!./scoreList.css"], function(sm,scoreList) {
+define(["smartgrid","text!./scoreList.html","../stuList/stuList","../subList/subList","css!./scoreList.css"], function(sm,scoreList,stuList,subList) {
     avalon.templateCache.scoreList = scoreList;
     var scoreList = avalon.define("scoreList", function(vm) {
         vm.$skipArray = ["smartgrid"];
@@ -9,9 +9,11 @@ define(["smartgrid","text!./scoreList.html","css!./scoreList.css"], function(sm,
             vm.type = "post";
         }
         vm.submit = function() {
-            var data = {name:scoreForm.name,number:scoreForm.number,subname:scoreForm.gender,score:scoreForm.score};
+            console.log(stuList);
+            var data = {uid:stuList.getStuId(scoreForm.name),sid:subList.getSubId(scoreForm.subject),score:scoreForm.score};
+            console.log(data);
             var type;
-            if(vm.type == "post") url = '/student';
+            if(vm.type == "post") url = '/student/'+data.uid+'/score/subject/'+data.sid;///student/:id/score/subject/:id
             if(vm.type == "put") url = '/student/'+vm.selectedId
             avalon.ajax({
                 url: url,
@@ -117,11 +119,11 @@ define(["smartgrid","text!./scoreList.html","css!./scoreList.css"], function(sm,
                 }
             },
             columns: [
-                {key: "name",name: "姓名",width: 200}, 
-                {key: "number",name: "学号",width: 200}, 
-                {key: "subject", name: "科目",width: 200}, 
-                {key: "score",name: "成绩",width: 200},
-                {key: "opera", name: "操作",width: 200,format: "dropdown"},
+                {key: "name",name: "姓名",width: 160}, 
+                {key: "number",name: "学号",width: 160}, 
+                {key: "subject", name: "科目",width: 160}, 
+                {key: "score",name: "成绩",width: 160},
+                {key: "opera", name: "操作",width: 160,format: "dropdown"},
             ]
         }
     })
