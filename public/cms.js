@@ -23,7 +23,7 @@ require.config({
 	}
 });
 
-require(['avalon',"mmRequest",'domReady!'],function(avalon,mmRequest) {
+require(['avalon',"mmRequest",'domReady'],function(avalon,mmRequest) {
 	avalon.templateCache.empty="&nbsp;"
 	var root = avalon.define("root", function(vm) {
         vm.stuList = "empty",
