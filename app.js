@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //bodyParser后才添加路由
-app.use('/', product, user, order);
+app.use('/', student, subject);
 
 //第一次请求返回静态页面,之后通过json交换数据
 app.use(express.static(path.join(__dirname, 'public')));
