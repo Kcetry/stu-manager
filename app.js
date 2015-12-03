@@ -41,14 +41,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(function(req, res, next) {
 //   res.json({err_code:"404",msg:"bad url request"});
 // });
-
-app.get('/code ',function(req,res){
+app.get('./sd',function(req,res) {
+	res.end("sdfg");
+})
+app.get('/code',function(req,res){
 	var ary = ccap.get();
     var txt = ary[0];
     var buf = ary[1];
 
-    response.end(buf);
+    res.end(buf);
     console.log(txt);
-})
+});
 
 module.exports = app;
