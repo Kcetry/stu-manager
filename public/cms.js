@@ -19,7 +19,10 @@ require.config({
 	shim: {
 		avalon: {
 			exports:'avalon'
-		}
+		},
+        jquery: {
+            
+        }
 	}
 });
 
@@ -52,6 +55,7 @@ require(['avalon',"mmRequest",'domReady!'],function(avalon,mmRequest) {
         cache: false,
     }).done(function(res) {
         console.log("dfDfdf");
+
         console.log(res);
     })
 	avalon.scan()
