@@ -46,7 +46,7 @@ var vcode = "";
 
 app.get('/code',function(req,res){
 	var ary = ccap.get();
-    var txt = ary[0];
+    var txt = ary[0].toLowerCase();
     var buf = ary[1];
 	res.writeHead('200', {'Content-Type': 'image/jpeg'}); 
     res.write(buf,'binary');
