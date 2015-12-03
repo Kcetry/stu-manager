@@ -1,0 +1,8 @@
+.scoreInfo{color:#FFFFFF;}
+.scoreInfo .stunumber{margin:20px;}
+.scoreInfo .stuname{margin:20px;}
+.scoreInfo .subname{margin:20px;}
+.scoreInfo .score{margin:20px;}
+.scoreInfo .sublimtBtn{width: 70px;height:30px;margin:10px;background-color: #FFFFFF;outline:none;}
+.scoreInfo .backBtn{float:left;width:70px;height:30px;margin:10px;background-color: #FFFFFF;outline:none;}
+.scoreInfo .listBtn{float:left;width:60px;height:30px;margin:5px;}

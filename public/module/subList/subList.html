@@ -1,0 +1,13 @@
+<div ms-controller="subList">
+    <div ms-visible="!isDisplay" style="width:800px">
+      <div ms-widget="smartgrid sgSubList" data-smartgrid-body-height='600' style="width:800px"></div>
+        <button class="listBtn" ms-click="add">添加</button>
+    </div>
+    <div ms-controller="subForm">
+	    <div ms-visible="isDisplay" class="subInfo">
+	        <div class="name">名称<input ms-duplex="name"></div>  
+	        <div><button class="sublimtBtn" ms-click="submit">提交</button>
+	           <button class="backBtn" ms-click="back">返回</button></div>
+	    </div>
+	</div>
+</div>

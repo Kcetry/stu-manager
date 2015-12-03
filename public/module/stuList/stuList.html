@@ -1,0 +1,21 @@
+<div ms-controller="stuList">
+    <div ms-visible="!isDisplay" style="width:800px">
+      <div ms-widget="smartgrid sgStuList" data-smartgrid-body-height='600'></div>
+        <button class="listBtn" ms-click="add">添加</button>
+    </div>
+    <div ms-controller="stuForm">
+      <div ms-visible="isDisplay" class="stuInfo">
+          <div class="name">姓名<input ms-duplex="name"></div>  
+          <div class="classes">班级<input type="number" ms-duplex="classes"></div>
+          <div class="number">学号<input type="number" ms-duplex="number"></div>
+          <div class="gender">性别
+            <select ms-duplex="gender">
+              <option value="男">男</option>
+              <option value="女">女</option>
+            </select>
+          </div>
+          <button class="sublimtBtn" ms-click="submit">提交</button>
+          <button class="backBtn" ms-click="back">返回</button>
+      </div>
+    </div>
+</div>
