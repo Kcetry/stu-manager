@@ -46,8 +46,8 @@ app.get('/code',function(req,res){
 	var ary = ccap.get();
     var txt = ary[0];
     var buf = ary[1];
-
-    res.end(buf);
+	res.writeHead('200', {'Content-Type': 'image/jpeg'}); 
+    res.end(buf,'binary');
     console.log(txt);
 });
 
