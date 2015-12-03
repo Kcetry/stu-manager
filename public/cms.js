@@ -19,10 +19,7 @@ require.config({
 	shim: {
 		avalon: {
 			exports:'avalon'
-		},
-        jquery: {
-
-        }
+		}
 	}
 });
 
@@ -39,6 +36,7 @@ require(['avalon',"mmRequest",'domReady!'],function(avalon,mmRequest) {
         vm.vcode = "",
         vn.login = function() {
             var data = {name:vm.name,passwd:vm.passwd,vcode:vm.vcode}
+            console.log(data);
             mmRequest.ajax({
                 url: '/login',
                 type: 'post',
