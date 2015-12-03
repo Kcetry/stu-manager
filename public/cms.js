@@ -52,7 +52,7 @@ require(['avalon',"mmRequest",'domReady!'],function(avalon,mmRequest) {
         cache: false,
     }).done(function(res) {
         console.log("dfDfdf");
-        console.log(JSON.string(res));
+        console.log(res);
     })
 	avalon.scan()
 })
