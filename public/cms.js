@@ -35,7 +35,7 @@ require(['avalon',"mmRequest",'jquery','domReady!'],function(avalon,mmRequest) {
         vm.name = "",
         vm.passwd = "",
         vm.vcode = "",
-        vn.login = function() {
+        vm.login = function() {
             var data = {name:vm.name,passwd:vm.passwd,vcode:vm.vcode}
             console.log(data);
             mmRequest.ajax({
