@@ -2,44 +2,58 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>学生成绩管理系统</title>
+	<title>一个略显丑陋的管理系统</title>
 	<link rel="stylesheet" type="text/css" href="module/cms/cms.css">
 </head>
 	<body ms-controller="root">
-		<!-- 导航 s-->
-		<div class="header">
-			<div class="center">
-				<spna>学生成绩管理系统</spna>
-				<spna>----</spna>
-				<span>管理员</span>
-				<span>退出登陆</span>
-			</div>
+		
+		<div class="login" ms-visible="isDisHome==0">
+			<center><h1>教务管理系统</h1></center>
+			<center>
+				<div class="admin">管理员<input class="adminInput" type="text"></div>
+				<div class="passwd">密码&nbsp&nbsp<input class="passwdInput" type="text"></div>
+				<div class="vcode">验证码<input class="passwdInput" type="text"></div>
+				<div class="vcodeImg"></div>
+			</center>
+			<center><button class="submit">登陆</button></center>
 		</div>
-		<!-- 导航 e-->
-		<!-- 中间部分 s-->
-		<div class="horCenter">
-			<div class="container">
-				<!-- 左边的导航 s-->
-				<div class="tabBar">
-					<button ms-click="btnClick(0)">学生信息</button>
-					<button ms-click="btnClick(1)">课程信息</button>
-					<button ms-click="btnClick(2)">成绩信息</button>
+
+		<div ms-visible="isDisHome==1">
+			<!-- 导航 s-->
+			<div class="header">
+				<div class="center">
+					<spna>教务管理系统</spna>
+					<spna>----</spna>
+					<span>管理员</span>
+					<span>退出登陆</span>
 				</div>
-				<!-- 左边的导航 e-->
-				<!-- 右边的列表 s-->
-				<div class="content">
-					<div ms-include-src="stuList" ms-visible="index===0"></div>
-					<div ms-include-src="subList" ms-visible="index===1"></div>
-					<div ms-include-src="scoreList" ms-visible="index===2"></div>
-				</div>
-				<!-- 右边的列表 e-->
 			</div>
-		</div>
-		<!-- 中间部分 e-->
-		<!-- 尾部 s-->
-		<div class="footer">
-			<div class="verCenter">
-				<center><span>© 2015 jdsm.com 版权所有</span></center>
+			<!-- 导航 e-->
+			<!-- 中间部分 s-->
+			<div class="horCenter">
+				<div class="container">
+					<!-- 左边的导航 s-->
+					<div class="tabBar">
+						<button ms-click="btnClick(0)">学生信息</button>
+						<button ms-click="btnClick(1)">课程信息</button>
+						<button ms-click="btnClick(2)">成绩信息</button>
+					</div>
+					<!-- 左边的导航 e-->
+					<!-- 右边的列表 s-->
+					<div class="content">
+						<div ms-include-src="stuList" ms-visible="index===0"></div>
+						<div ms-include-src="subList" ms-visible="index===1"></div>
+						<div ms-include-src="scoreList" ms-visible="index===2"></div>
+					</div>
+					<!-- 右边的列表 e-->
+				</div>
+			</div>
+			<!-- 中间部分 e-->
+			<!-- 尾部 s-->
+			<div class="footer">
+				<div class="verCenter">
+					<center><span>© 2015 jdsm.com 版权所有</span></center>
+				</div>
 			</div>
 		</div>
 		<!-- 尾部 e-->

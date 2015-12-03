@@ -41,9 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(function(req, res, next) {
 //   res.json({err_code:"404",msg:"bad url request"});
 // });
-app.get('./sd',function(req,res) {
-	res.end("sdfg");
-})
+
 app.get('/code',function(req,res){
 	var ary = ccap.get();
     var txt = ary[0];

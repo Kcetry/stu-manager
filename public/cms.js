@@ -23,18 +23,29 @@ require.config({
 	}
 });
 
-require(['avalon',"mmRequest",'domReady!'],function() {
+require(['avalon',"mmRequest",'domReady!'],function(avalon,mmRequest) {
 	avalon.templateCache.empty="&nbsp;"
-	avalon.define("root", function(vm) {
+	var root = avalon.define("root", function(vm) {
         vm.stuList = "empty",
         vm.subList = "empty",
         vm.scoreList = "empty",
+        vm.isDisHome = 0,
         vm.index = 0,
+
         vm.btnClick = function (index) {
             vm.index = index;
         }
 	});
-
+    if(localStorage.getItem("jd-stu-admin")) {
+        root.isDisHome = 1;
+    }
+    mmRequest.ajax({
+        url: '/code',
+        type: 'get',
+        cache: false,
+    }).done(function(res) {
+        console.log(JSON.string(res));
+    })
 	require([
         './module/stuList/stuList',
         './module/subList/subList',
