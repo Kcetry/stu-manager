@@ -14,7 +14,7 @@ require.config({
         getModel: 'vendor/oniui/avalon.getModel',
         mmRequest: 'vendor/oniui/mmRequest/mmRequest',
         mmPromise: 'vendor/oniui/mmPromise/mmPromise',
-        jquery:"vendor/jquery-1.11.1.min.js"
+        jquery:"vendor/jquery-1.11.1.min"
 	},
 	priority:['text','css'],
 	shim: {
@@ -58,7 +58,7 @@ require(['avalon',"mmRequest",'jquery','domReady!'],function(avalon,mmRequest) {
     if(localStorage.getItem("jd-stu-admin")) {
         root.isDisHome = 1;
     }
-    
+
     $('.vcodeImg').append('<img class="vcodeImg" src="http://115.28.28.88:5610/code">');
 
 	require([
