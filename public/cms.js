@@ -13,7 +13,8 @@ require.config({
         scrollbar: 'vendor/oniui/scrollbar/avalon.scrollbar',
         getModel: 'vendor/oniui/avalon.getModel',
         mmRequest: 'vendor/oniui/mmRequest/mmRequest',
-        mmPromise: 'vendor/oniui/mmPromise/mmPromise'
+        mmPromise: 'vendor/oniui/mmPromise/mmPromise',
+        jquery:"vendor/jquery-1.11.1.min.js"
 	},
 	priority:['text','css'],
 	shim: {
@@ -23,7 +24,7 @@ require.config({
 	}
 });
 
-require(['avalon',"mmRequest",'domReady'],function(avalon,mmRequest) {
+require(['avalon',"mmRequest",'jquery','domReady!'],function(avalon,mmRequest) {
 	avalon.templateCache.empty="&nbsp;"
 	var root = avalon.define("root", function(vm) {
         vm.stuList = "empty",
@@ -57,6 +58,8 @@ require(['avalon',"mmRequest",'domReady'],function(avalon,mmRequest) {
     if(localStorage.getItem("jd-stu-admin")) {
         root.isDisHome = 1;
     }
+    
+    $('.vcodeImg').append('<img class="vcodeImg" src="http://115.28.28.88:5610/code">');
 
 	require([
         './module/stuList/stuList',
