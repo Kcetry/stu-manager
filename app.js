@@ -42,13 +42,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 //   res.json({err_code:"404",msg:"bad url request"});
 // });
 
+var vcode = "";
+
 app.get('/code',function(req,res){
 	var ary = ccap.get();
     var txt = ary[0];
     var buf = ary[1];
 	res.writeHead('200', {'Content-Type': 'image/jpeg'}); 
     res.write(buf,'binary');
-    console.log(txt);
+    vcode = txt;
+});
+
+app.post('/login',function(req,res){
+	if(req.body.vcode == vcode) {
+		if(req.body.name == "admin" && req.body.passwd == 123) {
+			res.json({code:10000,message:"login success"})
+		}else {
+			res.json({code:10001,message:"your name or password is wrong"})
+		}
+		
+	}else {
+		res.json({code:10001,message:"your verify code is wrong"})
+	}
 });
 
 module.exports = app;

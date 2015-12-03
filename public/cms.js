@@ -21,7 +21,7 @@ require.config({
 			exports:'avalon'
 		},
         jquery: {
-            
+
         }
 	}
 });
@@ -34,7 +34,24 @@ require(['avalon',"mmRequest",'domReady!'],function(avalon,mmRequest) {
         vm.scoreList = "empty",
         vm.isDisHome = 0,
         vm.index = 0,
-
+        vm.name = "",
+        vm.passwd = "",
+        vm.vcode = "",
+        vn.login = function() {
+            var data = {name:vm.name,passwd:vm.passwd,vcode:vm.vcode}
+            mmRequest.ajax({
+                url: '/login',
+                type: 'post',
+                cache: false,
+                data:data
+            }).done(function(res) {
+                console.log("dfDfdf");
+                console.log(res.code);
+                if(res.code==10000) {
+                    vm.isDisHome = 1;
+                }
+            })
+        }
         vm.btnClick = function (index) {
             vm.index = index;
         }
@@ -48,15 +65,7 @@ require(['avalon',"mmRequest",'domReady!'],function(avalon,mmRequest) {
         './module/subList/subList',
         './module/scoreList/scoreList',
      ]);
-    console.log("dfDfdf");
-    mmRequest.ajax({
-        url: '/code',
-        type: 'get',
-        cache: false,
-    }).done(function(res) {
-        console.log("dfDfdf");
 
-        console.log(res);
-    })
+
 	avalon.scan()
 })
