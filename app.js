@@ -51,11 +51,13 @@ app.get('/code',function(req,res){
 	res.writeHead('200', {'Content-Type': 'image/jpeg'}); 
     res.write(buf,'binary');
     vcode = txt;
+    console.log(txt)
 });
 
 app.post('/login',function(req,res){
+	console.log(req.body)
 	if(req.body.vcode == vcode) {
-		if(req.body.name == "admin" && req.body.passwd == 123) {
+		if(req.body.name == "admin" && req.body.passwd == "123") {
 			res.json({code:10000,message:"login success"})
 		}else {
 			res.json({code:10001,message:"your name or password is wrong"})
