@@ -5,6 +5,8 @@ var path = require('path');
 //使用bodyParser,用于解析客户端请求的body中的内容,使用JSON编码处理,url编码处理以及对于文件的上传处理
 var bodyParser = require('body-parser');
 
+var ccap = require('ccap')();
+
 //使用日志
 var logger = require('morgan');
 
@@ -39,5 +41,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(function(req, res, next) {
 //   res.json({err_code:"404",msg:"bad url request"});
 // });
+
+app.get('/code ',function(req,res){
+	var ary = ccap.get();
+    var txt = ary[0];
+    var buf = ary[1];
+
+    response.end(buf);
+    console.log(txt);
+})
 
 module.exports = app;
