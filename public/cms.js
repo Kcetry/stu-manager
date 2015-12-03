@@ -39,17 +39,20 @@ require(['avalon',"mmRequest",'domReady!'],function(avalon,mmRequest) {
     if(localStorage.getItem("jd-stu-admin")) {
         root.isDisHome = 1;
     }
-    mmRequest.ajax({
-        url: '/code',
-        type: 'get',
-        cache: false,
-    }).done(function(res) {
-        console.log(JSON.string(res));
-    })
+
 	require([
         './module/stuList/stuList',
         './module/subList/subList',
         './module/scoreList/scoreList',
      ]);
+    console.log("dfDfdf");
+    mmRequest.ajax({
+        url: '/code',
+        type: 'get',
+        cache: false,
+    }).done(function(res) {
+        console.log("dfDfdf");
+        console.log(JSON.string(res));
+    })
 	avalon.scan()
 })
