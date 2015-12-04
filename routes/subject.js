@@ -2,7 +2,7 @@ var Subject = require('../models/subject');
 var express = require('express');
 var router = express.Router();
 
-
+//获取全部科目信息
 router.route('/subject').get(function(req, res) {
 	Subject.find(function(err, subject) {
 		if (err) {
@@ -16,7 +16,7 @@ router.route('/subject').get(function(req, res) {
 	});
 });
 
-
+//添加科目信息
 router.route('/subject').post(function(req, res) {
 	var subject = new Subject(req.body);
 	subject.save(function(err) {
@@ -27,7 +27,7 @@ router.route('/subject').post(function(req, res) {
 	});
 });
 
-//更新
+//更新科目信息
 router.route('/subject/:id').put(function(req, res) {
 	Subject.findOne({ _id: req.params.id}, function(err, subject) {
 	    if (err) {
@@ -45,7 +45,7 @@ router.route('/subject/:id').put(function(req, res) {
 	});
 });
 
-//删除
+//删除科目信息
 router.route('/subject/:id').delete(function(req, res) {
 	Subject.remove({
 		_id: req.params.id

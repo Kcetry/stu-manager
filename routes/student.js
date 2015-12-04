@@ -2,7 +2,7 @@ var Student = require('../models/student');
 var express = require('express');
 var router = express.Router();
 
-//passed
+//获取全部学生信息
 router.route('/student').get(function(req, res) {
 	Student.find(function(err, student) {
 		if (err)  return showErrMsg(err.errors,res);
@@ -14,7 +14,7 @@ router.route('/student').get(function(req, res) {
 	});
 });
 
-//passed
+//添加学生信息
 router.route('/student').post(function(req, res) {
 	var student = new Student(req.body);
 	student.save(function(err) {
@@ -25,23 +25,6 @@ router.route('/student').post(function(req, res) {
 
 
 //全部成绩信息
-/*[
-    {
-      "_id": "565d4a434bd5046c2f589b01",
-      "name": "徐小静",
-      "number": "07140836",
-      "scores": [
-        {
-          "subject": {
-            "_id": "565d64a334473be82cf5be6a",
-            "name": "AngularJS",
-            "__v": 0
-          },
-          "score": "94"
-        }
-      ]
-    }*/
-//passed
 router.route('/student/score').get(function(req, res) {
 	Student.find({},'name number scores.subject scores.score').populate('scores.subject').exec(function(err, student) {
 		if (err)  return showErrMsg(err.errors,res);
@@ -54,7 +37,6 @@ router.route('/student/score').get(function(req, res) {
 });
 
 //某学生的所有科目成绩
-//passed
 router.route('/student/:id/score/subject').get(function(req, res) {
 	Student.findOne({_id: req.params.id}).populate('scores.subject').exec(function(err, student) {
 		if (err)  return showErrMsg(err.errors,res);
@@ -66,22 +48,7 @@ router.route('/student/:id/score/subject').get(function(req, res) {
 	});
 });
 
-//某学生的某科目成绩
-//	Student.findOne({'scores.subject':req.params.sid},{'scores.subject.$':1}).populate('scores.subject').exec(function(err, student) {
-/*可以只返回成绩
-
-    "_id": "565d4a434bd5046c2f589b01",
-    "scores": [
-      {
-        "subject": {
-          "_id": "565d6d7534473be82cf5be6b",
-          "name": "ReactJS",
-          "__v": 0
-        },
-        "score": "98",
-        "_id": "565e96de1c64f5b81bca6c7b"
-      }
-    ]*/
+//获取某学生的某科目成绩
 router.route('/student/:uid/score/subject/:sid').get(function(req, res) {
 	console.log(req.params);//{number:"07140836"}
 	Student.findOne({_id: req.params.uid,'scores.subject':req.params.sid},{'name scores.subject.$':1}).populate('scores.subject').exec(function(err, student) {
@@ -96,7 +63,7 @@ router.route('/student/:uid/score/subject/:sid').get(function(req, res) {
 
 
 
-//passed
+//添加某学生的某科目成绩
 router.route('/student/:id/score/subject/:id').post(function(req, res) {
 	Student.findOne({_id:req.body.uid},function(err, student) {
 		var flag = false;
@@ -119,8 +86,7 @@ router.route('/student/:id/score/subject/:id').post(function(req, res) {
 });
 
 
-//更新
-//passed
+//更新学生信息
 router.route('/student/:id').put(function(req, res) {
 	Student.findOne({ _id: req.params.id}, function(err, student) {
 	    if (err)  return res.showErrMsg(err.errors,res);
@@ -137,8 +103,7 @@ router.route('/student/:id').put(function(req, res) {
 });
 
 
-//删除
-//passed
+//删除学生信息
 router.route('/student/:id').delete(function(req, res) {
 	Student.remove({
 		_id: req.params.id
